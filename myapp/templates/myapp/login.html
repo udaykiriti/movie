@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="row white-fg mb-5 justify-content-md-center">
+    <div class="col col-md-5 col-md-auto login-style">
+        <h2 class = "text-center">LOGIN</h2>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="" class="form-label"><i class="bi bi-person-fill m-r"></i>{{form.username.label_tag}}</label>{{form.username}}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label"><i class="bi bi-key-fill m-r"></i>{{form.password.label_tag}}</label>{{form.password}}
+            </div>
+            <div class="d-grid gap-2">
+            <input type="submit" value="Login" class= "btn btn-primary mt-4">
+            </div>
+        </form>
+        <hr>
+        <div class="d-grid gap-2">
+            <label class = "mt-2">Not Registered?</label>
+            <a href="{% url 'signup' %}" class = "btn btn-success">Sign Up</a>
+        </div>
+        {% for m in messages %}
+        <div class  = "{{m.tags}} text-center">
+            {{m}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock%}
